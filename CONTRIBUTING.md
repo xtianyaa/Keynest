@@ -1,31 +1,31 @@
-# Contributing
+# 贡献指南
 
-Thanks for helping improve Keynest.
+感谢你愿意帮助改进 Keynest。
 
-## Development Setup
+## 开发环境
 
-1. Install Node.js and Rust.
-2. Install dependencies:
+1. 安装 Node.js 和 Rust。
+2. 安装依赖：
 
 ```powershell
 npm install
 ```
 
-3. Run the web UI:
+3. 启动 Web UI：
 
 ```powershell
 npm run dev
 ```
 
-4. Run the desktop app:
+4. 启动桌面应用：
 
 ```powershell
 npm run tauri:dev
 ```
 
-## Checks
+## 提交前检查
 
-Run these before submitting changes:
+提交变更前建议运行：
 
 ```powershell
 npm test
@@ -34,14 +34,17 @@ cargo test --manifest-path src-tauri\Cargo.toml
 npm run tauri -- build --debug --no-bundle
 ```
 
-## Contribution Guidelines
+如果只修改文档，可以只检查文档链接、格式和 Git 差异；如果修改功能、存储、安全逻辑或桌面配置，需要运行完整检查。
 
-- Keep the app local-first by default.
-- Do not add telemetry, account systems, or cloud sync without an explicit design discussion.
-- Avoid logging secrets, master passwords, clipboard contents, or raw vault data.
-- Keep UI changes dense and desktop-tool oriented rather than marketing-page oriented.
-- Add focused tests for changes that affect vault data, entry editing, password generation, or security behavior.
+## 贡献原则
 
-## Security Changes
+- 默认保持本地优先，保险库数据应由用户自己掌控。
+- 不要在没有设计讨论的情况下加入遥测、账号系统或云同步。
+- 不要记录密钥、主密码、剪贴板内容或原始保险库数据。
+- UI 改动应保持桌面工具风格：紧凑、可扫描、适合反复使用。
+- 涉及保险库数据、条目编辑、密码生成或安全行为的改动，应增加聚焦测试。
+- 避免把构建产物、依赖目录、本地 `.kdbx` 文件、`.env` 文件或日志提交到仓库。
 
-For vulnerability fixes, do not include exploit details in a public issue before maintainers have had time to review. See [SECURITY.md](SECURITY.md).
+## 安全相关变更
+
+如果你要修复漏洞，请不要在公开 Issue 中提前披露可利用细节。请先阅读 [SECURITY.md](SECURITY.md)，并优先使用私密渠道报告。

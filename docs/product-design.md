@@ -1,51 +1,51 @@
-# Product Design
+# 产品设计
 
-Keynest is a local-first desktop vault for everyday secrets. It is intentionally closer to a lightweight desktop utility than a cloud account product.
+Keynest 是一款本地优先的桌面保险库，用于管理日常密码和密钥。它更接近轻量桌面工具，而不是云账号产品。
 
-## Product Principles
+## 产品原则
 
-- Local-first: vault data stays in a user-owned `.kdbx` file.
-- No account required: there is no backend, telemetry pipeline, or cloud dependency.
-- Low-friction usage: a normal user should understand create, open, add, copy, edit, save, and lock without onboarding.
-- Developer-secret friendly: API keys, environment variable names, projects, expiry dates, and `.env` copying are first-class needs.
-- Desktop-tool UI: dense, predictable, and built for repeated use.
+- 本地优先：保险库数据保存在用户自己掌控的 `.kdbx` 文件中。
+- 无账号要求：没有后端服务、遥测管道或云依赖。
+- 低使用门槛：普通用户不需要复杂引导，也能理解创建、打开、新增、复制、编辑、保存和锁定。
+- 面向开发者密钥：API Key、环境变量名、项目、过期时间和 `.env` 复制是核心场景。
+- 桌面工具 UI：界面应紧凑、稳定、可预测，适合反复使用。
 
-## Current Scope
+## 当前范围
 
-The MVP supports:
+MVP 支持：
 
-- account passwords
-- API keys
-- secure notes
-- identity records
-- favorites
-- trash, restore, and permanent delete
-- search
-- password generation
-- clipboard clear timeout
-- auto-lock timeout
-- recent local vault paths
+- 账号密码
+- API Key
+- 安全笔记
+- 身份信息
+- 收藏
+- 回收站、恢复和永久删除
+- 搜索
+- 密码生成
+- 剪贴板清理时间
+- 自动锁定时间
+- 最近打开的本地保险库路径
 
-## Storage Model
+## 存储模型
 
-Keynest writes app-created KDBX files. The app stores a small set of metadata fields for entry type, favorite state, trash state, timestamps, and API-key-specific details.
+Keynest 写入由本应用创建的 KDBX 文件。应用会保存少量元数据字段，用于记录条目类型、收藏状态、回收站状态、更新时间，以及 API Key 相关信息。
 
-Editing arbitrary third-party KeePass/KeePassXC databases is not a compatibility guarantee in the MVP because KDBX4 writing support in the current Rust dependency remains experimental.
+MVP 不承诺完整兼容任意第三方 KeePass/KeePassXC 数据库的写入与往返保存，因为当前 Rust 依赖中的 KDBX4 写入能力仍带实验性质。
 
-## Near-Term Roadmap
+## 近期路线
 
-- Improve desktop packaging and installer metadata.
-- Add stronger release hardening and signing.
-- Add Windows Hello or platform credential unlock as an optional convenience layer.
-- Improve interoperability testing with KeePass-family tools.
-- Add export-safe documentation and backup guidance.
+- 优化桌面打包和安装器元数据。
+- 增加更完整的发布加固和签名流程。
+- 将 Windows Hello 或平台凭据解锁作为可选便利层接入。
+- 加强与 KeePass 系工具的互操作测试。
+- 补充备份、恢复和安全导出相关文档。
 
-## Explicit Non-Goals For MVP
+## MVP 明确不做
 
-- cloud sync
-- mobile apps
-- browser autofill extension
-- team sharing
-- account system
-- telemetry
-- importing password-manager exports
+- 云同步
+- 移动端
+- 浏览器自动填充扩展
+- 团队共享
+- 账号系统
+- 遥测
+- 密码管理器导入迁移

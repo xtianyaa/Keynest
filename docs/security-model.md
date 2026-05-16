@@ -1,46 +1,46 @@
-# Security Model
+# 安全模型
 
-Keynest is a local-first password and secret manager. The primary security boundary is the user-owned `.kdbx` file plus the master password used to unlock it.
+Keynest 是一款本地优先的密码与密钥管理工具。它的主要安全边界是用户自己掌控的 `.kdbx` 文件，以及用于解锁该文件的主密码。
 
-## Trust Boundaries
+## 信任边界
 
-- The vault file stays on the local machine unless the user manually moves it.
-- There is no account system, backend service, telemetry pipeline, or cloud sync in this MVP.
-- The master password is required to create or open a vault.
-- The application stores entries through the KDBX database format using app-managed metadata for entry type, favorite state, trash state, and timestamps.
+- 除非用户手动移动或同步，保险库文件会留在本机。
+- MVP 没有账号系统、后端服务、遥测管道或云同步。
+- 创建或打开保险库都需要主密码。
+- 应用通过 KDBX 数据库格式保存条目，并使用应用管理的元数据记录条目类型、收藏状态、回收站状态和更新时间。
 
-## Entry Data
+## 条目数据
 
-The MVP stores:
+MVP 保存以下数据：
 
-- Account passwords: website, username, password, tags, and notes.
-- API keys: provider, secret, environment variable name, project, expiry date, tags, and notes.
-- Secure notes: freeform body, tags, and notes.
-- Identity records: name, email, phone, address, tags, and notes.
+- 账号密码：网站、用户名、密码、标签和备注。
+- API Key：服务商、密钥、环境变量名、项目、过期时间、标签和备注。
+- 安全笔记：自由文本正文、标签和备注。
+- 身份信息：姓名、邮箱、电话、地址、标签和备注。
 
-API key `.env` copy builds a single line from the stored environment variable name and secret value.
+API Key 的 `.env` 复制功能会根据保存的环境变量名和密钥值生成单行文本。
 
-## Runtime Behavior
+## 运行时行为
 
-- Locking clears the in-memory vault snapshot from the UI state.
-- Auto-lock is a UI timer that calls the same lock path after the configured idle period.
-- Clipboard clearing is best-effort. It only clears content copied by this app while the runtime still has clipboard permission and the page/app session remains active.
-- Password and API key values are masked by default in the detail view and can be revealed by the user.
+- 锁定会从 UI 状态中清除内存里的保险库快照。
+- 自动锁定是 UI 层计时器，会在配置的空闲时间后调用同一条锁定路径。
+- 剪贴板清理是尽力而为。它只会尝试清理本应用复制的内容，并且依赖运行时仍有剪贴板权限、页面或应用会话仍然存活。
+- 密码和 API Key 默认在详情页中隐藏，用户可以手动显示。
 
-## Explicit Non-Goals For This MVP
+## MVP 明确不做
 
-- Importing existing password manager exports.
-- Editing arbitrary third-party KeePass/KeePassXC databases with full compatibility guarantees.
-- Browser autofill or extension integration.
-- Mobile clients.
-- Cloud sync or multi-device conflict resolution.
-- Team sharing, access control, or audit logs.
-- Windows Hello unlock. The UI may mention it as future work, but it is not active.
-- Installer signing or production release hardening.
+- 导入现有密码管理器导出文件。
+- 保证完整兼容并安全改写任意第三方 KeePass/KeePassXC 数据库。
+- 浏览器自动填充或浏览器扩展集成。
+- 移动端客户端。
+- 云同步或多设备冲突解决。
+- 团队共享、访问控制或审计日志。
+- Windows Hello 解锁。UI 可以把它作为未来能力展示，但当前版本尚未启用。
+- 安装包签名或生产发布加固。
 
-## Practical Guidance
+## 使用建议
 
-- Use a strong master password that is not reused elsewhere.
-- Keep backups of vault files in a location you control.
-- Treat clipboard contents as temporarily exposed to other local software.
-- Avoid storing secrets in screenshots, logs, issue trackers, or chat transcripts.
+- 使用强主密码，并且不要与其他服务复用。
+- 把保险库文件备份到你自己掌控的位置。
+- 把剪贴板内容视为会短暂暴露给本机其他软件。
+- 避免在截图、日志、Issue、聊天记录或公开文档中暴露真实密钥。

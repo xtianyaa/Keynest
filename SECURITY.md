@@ -1,30 +1,30 @@
-# Security Policy
+# 安全政策
 
-Keynest is an early local-first desktop password and API key manager. Treat it as an MVP until it has gone through dedicated security review.
+Keynest 是一款早期的本地优先桌面密码与 API Key 管理工具。在完成专门的安全审计前，请把它视为 MVP。
 
-## Supported Versions
+## 支持版本
 
-The current `main` branch is the only supported development line before the first stable release.
+在第一个稳定版本发布前，当前 `main` 分支是唯一支持的开发线。
 
-## Reporting a Vulnerability
+## 报告漏洞
 
-Please report suspected security issues privately instead of opening a public issue with exploit details. Use GitHub private vulnerability reporting if it is enabled for the repository, or contact the maintainer through GitHub.
+如果你发现疑似安全问题，请优先通过私密渠道报告，不要直接在公开 Issue 中披露利用细节。可以使用 GitHub 的私密漏洞报告功能；如果仓库尚未启用该功能，请通过 GitHub 联系维护者。
 
-Include:
+报告时建议包含：
 
-- affected version or commit
-- operating system and runtime details
-- reproduction steps
-- expected impact
-- whether the issue exposes stored secrets, master passwords, clipboard contents, or vault files
+- 受影响的版本或提交
+- 操作系统和运行时信息
+- 复现步骤
+- 预期影响
+- 是否会暴露已存储密钥、主密码、剪贴板内容或保险库文件
 
-## Security Model
+## 安全模型
 
-See [docs/security-model.md](docs/security-model.md) for the current trust boundaries, runtime behavior, and explicit non-goals.
+当前信任边界、运行时行为和明确的非目标，请阅读 [docs/security-model.md](docs/security-model.md)。
 
-## Current Limitations
+## 当前限制
 
-- Existing KeePass/KeePassXC databases are not guaranteed to round-trip safely.
-- Clipboard clearing is best-effort and depends on runtime permissions.
-- Windows Hello unlock is not implemented yet.
-- Installer signing and production release hardening are not included in the MVP.
+- 不保证现有 KeePass/KeePassXC 数据库能够安全完整地往返写入。
+- 剪贴板清理是尽力而为，实际效果取决于运行时权限和系统行为。
+- Windows Hello 解锁尚未实现。
+- MVP 暂不包含安装包签名和生产发布加固。
