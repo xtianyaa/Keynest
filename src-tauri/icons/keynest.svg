@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Keynest icon">
+  <defs>
+    <linearGradient id="shell" x1="64" x2="192" y1="40" y2="218" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#43b391"/>
+      <stop offset="1" stop-color="#1f6f58"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-8%" width="124%" height="122%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#10201a" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <path fill="#f4f7f5" d="M0 0h256v256H0z"/>
+  <path
+    filter="url(#shadow)"
+    fill="url(#shell)"
+    stroke="#164f40"
+    stroke-width="9"
+    d="M128 18 221 69v118l-93 51-93-51V69l93-51Z"
+  />
+  <path
+    fill="#f8fbf8"
+    d="M128 68c-24 0-43.5 19.5-43.5 43.5 0 16.7 9.4 31.2 23.3 38.5v34h40.4v-34a43.6 43.6 0 0 0 23.3-38.5C171.5 87.5 152 68 128 68Z"
+  />
+  <path
+    fill="#172620"
+    d="M128 94a14.7 14.7 0 0 1 8.3 26.8v21.8h-16.6v-21.8A14.7 14.7 0 0 1 128 94Z"
+  />
+  <path
+    fill="none"
+    stroke="#d7eee5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="12"
+    d="m75 108-15 14 15 14m106-28 15 14-15 14"
+  />
+</svg>
